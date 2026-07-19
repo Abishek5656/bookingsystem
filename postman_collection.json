@@ -17,7 +17,21 @@
               "raw": "{\"name\":\"Super Organizer\",\"email\":\"org@test.com\",\"password\":\"password123\"}"
             },
             "url": {"raw": "http://localhost:5000/api/auth/organizer/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "organizer", "register"]}
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set(\"org_token\", jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Login Organizer",
@@ -29,7 +43,21 @@
               "raw": "{\"email\":\"org@test.com\",\"password\":\"password123\"}"
             },
             "url": {"raw": "http://localhost:5000/api/auth/organizer/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "organizer", "login"]}
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set(\"org_token\", jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Register Customer",
@@ -41,7 +69,21 @@
               "raw": "{\"name\":\"Customer 1\",\"email\":\"cust@test.com\",\"password\":\"password123\"}"
             },
             "url": {"raw": "http://localhost:5000/api/auth/customer/register", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "customer", "register"]}
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set(\"cust_token\", jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         },
         {
           "name": "Login Customer",
@@ -53,7 +95,21 @@
               "raw": "{\"email\":\"cust@test.com\",\"password\":\"password123\"}"
             },
             "url": {"raw": "http://localhost:5000/api/auth/customer/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "customer", "login"]}
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let jsonData = pm.response.json();",
+                  "if (jsonData.success && jsonData.data && jsonData.data.token) {",
+                  "    pm.collectionVariables.set(\"cust_token\", jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
         }
       ]
     },
@@ -105,6 +161,16 @@
           }
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "org_token",
+      "value": ""
+    },
+    {
+      "key": "cust_token",
+      "value": ""
     }
   ]
 }
